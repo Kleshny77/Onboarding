@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("isOnboarded") var isOnboarded: Bool = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if !isOnboarded {
+                Onboarding(
+//                    isOnboarded: $isOnboarded,
+                    pages: PageModel.testData
+                )
+            } else {
+                Text("Welcome back")
+                
+                Button("url request", systemImage: "globe") {
+                    Worker().fetch(url: URL(string: "apple.com")!)
+                }
+            }
         }
-        .padding()
     }
 }
 

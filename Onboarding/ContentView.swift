@@ -13,6 +13,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             if !isOnboarded {
+                
                 Onboarding(
 //                    isOnboarded: $isOnboarded,
                     pages: PageModel.testData
